@@ -8,11 +8,11 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: democratic-csi
+      chart: snapshot-controller
       version: 0.13.7
       sourceRef:
         kind: HelmRepository
-        name: snapshot-controller
+        name: democratic-csi
         namespace: flux-system
   install:
     createNamespace: true
