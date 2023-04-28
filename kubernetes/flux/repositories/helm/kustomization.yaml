@@ -16,3 +16,4 @@ resources:
   - ./weave-gitops.yaml
   - ./external-secrets.yaml
   - ./democratic-csi.yaml
+  - ./emqx.yaml
