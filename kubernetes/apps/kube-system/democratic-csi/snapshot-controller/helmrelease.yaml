@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: freenas-nfs
+  name: snapshot-controller
   namespace: kube-system
 spec:
   interval: 15m
