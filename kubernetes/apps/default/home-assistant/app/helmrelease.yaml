@@ -53,6 +53,9 @@ spec:
         ports:
           http:
             port: 8123
+          websocket:
+            enabled: true
+            port: 8123
     ingress:
       main:
         enabled: true
