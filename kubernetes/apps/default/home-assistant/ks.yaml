@@ -9,7 +9,7 @@ spec:
     - name: cluster-apps-emqx
     - name: cluster-apps-cloudnative-pg
     - name: cluster-apps-onepassword-connect
-    - nake: cluster-apps-democratic-csi-freenas-nfs
+    - name: cluster-apps-democratic-csi-freenas-nfs
   path: ./kubernetes/apps/default/home-assistant/app
   prune: true
   sourceRef:
