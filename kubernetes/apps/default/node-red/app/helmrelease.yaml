@@ -37,13 +37,14 @@ spec:
         hajimari.io/icon: mdi:nodejs
 
       hosts:
-        - host: &host node-red.${SECRET_DOMAIN}
+        - host: node-red.${SECRET_DOMAIN}
           paths:
             - path: /
               pathType: Prefix
       tls:
+        secretName: node-red-tls
         hosts:
-          - *host
+          - node-red.${SECRET_DOMAIN}
         certificate:
           enabled: true
           issuerRef:
