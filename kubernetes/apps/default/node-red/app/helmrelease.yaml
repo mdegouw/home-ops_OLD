@@ -9,11 +9,11 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: node-red
-      version: 10.3.2
+      chart: app-template
+      version: 1.4.0
       sourceRef:
         kind: HelmRepository
-        name: node-red
+        name: bjw-s
         namespace: flux-system
   maxHistory: 2
   install:
@@ -27,6 +27,54 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    image:
+      repository: nodered/node-red
+      tag: 3.0.2
+    service:
+      main:
+        ports:
+          http:
+            port: 80
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
+          hajimari.io/icon: mdi:nodejs
+        hosts:
+          - host: &host node-red.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+    volumeClaimTemplates:
+      - name: data
+        mountPath: /data
+        accessMode: ReadWriteOnce
+        size: 5Gi
+        storageClass: freenas-nfs-csi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     persistence:
       enabled: true
       storageClass: freenas-nfs-csi

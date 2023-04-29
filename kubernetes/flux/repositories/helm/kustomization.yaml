@@ -20,4 +20,3 @@ resources:
   - ./cloudnative-pg.yaml
   - ./grafana.yaml
   - ./prometheus-community.yaml
-  - ./node-red.yaml
