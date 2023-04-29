@@ -7,3 +7,4 @@ resources:
   - ./hajimari/ks.yaml
   - ./emqx/ks.yaml
   - ./cloudnative-pg/ks.yaml
+  - ./home-assistant/ks.yaml

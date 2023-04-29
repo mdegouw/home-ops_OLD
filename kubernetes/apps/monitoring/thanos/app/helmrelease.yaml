@@ -37,7 +37,7 @@ spec:
         insecure: true
     queryFrontend:
       enabled: true
-      replicaCount: 3
+      replicaCount: 1
       ingress:
         enabled: true
         ingressClassName: nginx
@@ -52,14 +52,14 @@ spec:
               - *host
     query:
       enabled: true
-      replicaCount: 3
+      replicaCount: 1
       replicaLabel: ["__replica__"]
       dnsDiscovery:
         sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
     bucketweb:
-      enabled: true
-      replicaCount: 3
+      enabled: false
+      replicaCount: 1
     compactor:
       enabled: true
       extraFlags:
@@ -74,14 +74,14 @@ spec:
         size: 20Gi
     storegateway:
       enabled: true
-      replicaCount: 3
+      replicaCount: 1
       persistence:
         enabled: true
         storageClass: local-path
         size: 20Gi
     ruler:
       enabled: true
-      replicaCount: 3
+      replicaCount: 1
       replicaLabel: __replica__
       alertmanagers: ["http://kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093"]
       extraFlags: ["--web.prefix-header=X-Forwarded-Prefix"]
