@@ -28,7 +28,7 @@ spec:
     storageClasses:
       - name: freenas-nfs-csi
         defaultClass: false
-        reclaimPolicy: Retain
+        reclaimPolicy: Delete
         volumeBindingMode: Immediate
         allowVolumeExpansion: true
         parameters:
