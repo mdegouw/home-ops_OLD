@@ -42,5 +42,13 @@ spec:
             - path: /
               pathType: Prefix
       tls:
-        - hosts:
-            - *host
+        hosts:
+          - *host
+        certificate:
+          enabled: true
+          issuerRef:
+            kind: ClusterIssuer
+            name: letsencrypt-staging
+
+
+
