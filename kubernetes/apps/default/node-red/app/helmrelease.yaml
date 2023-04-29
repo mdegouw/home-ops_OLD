@@ -41,14 +41,14 @@ spec:
             - path: /
               pathType: Prefix
       tls:
-        secretName: node-red-tls
-        hosts:
-          - "node-red.${SECRET_DOMAIN}"
-        certificate:
-          enabled: true
-          issuerRef:
-            kind: ClusterIssuer
-            name: letsencrypt-staging
+        # secretName: node-red-tls
+        # hosts:
+        #   - node-red.${SECRET_DOMAIN}
+        # certificate:
+        #   enabled: true
+        #   issuerRef:
+        #     kind: ClusterIssuer
+        #     name: letsencrypt-staging
 
 
 
