@@ -17,3 +17,6 @@ resources:
   - ./external-secrets.yaml
   - ./democratic-csi.yaml
   - ./emqx.yaml
+  - ./cloudnative-pg.yaml
+  - ./grafana.yaml
+  - ./prometheus-community.yaml
