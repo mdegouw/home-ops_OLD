@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: node-red
-      version: 0.23.1
+      version: 0.23.0
       sourceRef:
         kind: HelmRepository
         name: node-red
@@ -35,16 +35,15 @@ spec:
       annotations:
         external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
         hajimari.io/icon: mdi:nodejs
-
       hosts:
-        - host: node-red.${SECRET_DOMAIN}
+        - host: "node-red.${SECRET_DOMAIN}"
           paths:
             - path: /
               pathType: Prefix
       tls:
         secretName: node-red-tls
         hosts:
-          - node-red.${SECRET_DOMAIN}
+          - "node-red.${SECRET_DOMAIN}"
         certificate:
           enabled: true
           issuerRef:
