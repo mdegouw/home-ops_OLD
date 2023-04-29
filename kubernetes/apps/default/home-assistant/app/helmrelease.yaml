@@ -49,9 +49,9 @@ spec:
       - secretRef:
           name: home-assistant-secret
     service:
-      type: LoadBalancer
-      externalIPs: ["${SVC_HASS_ADDR}"]
       main:
+        type: LoadBalancer
+        externalIPs: ["${SVC_HASS_ADDR}"]
         ports:
           http:
             port: 8123
