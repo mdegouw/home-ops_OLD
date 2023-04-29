@@ -50,9 +50,12 @@ spec:
         tls:
           - hosts:
               - *host
-    volumeClaimTemplates:
-      - name: data
-        mountPath: /data
-        accessMode: ReadWriteOnce
-        size: 5Gi
-        storageClass: freenas-nfs-csi
+
+      persistence:
+        config:
+          enabled: true
+          storageClass: freenas-nfs-csi
+          type: pvc
+          accessMode: ReadWriteOnce
+          size: 1Gi
+          mountPath: /data
