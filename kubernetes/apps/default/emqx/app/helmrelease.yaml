@@ -28,6 +28,7 @@ spec:
     emqxConfig:
       ALLOW_ANONYMOUS: "false"
       AUTH__MNESIA__PASSWORD_HASH: plain
+      CLUSTER__DISCOVERY_STRATEGY: " static"
     service:
       type: LoadBalancer
       externalIPs: ["${SVC_EMQX_ADDR}"]
@@ -55,18 +56,20 @@ spec:
       enabled: false
     persistence:
       enabled: true
-      existingClaim: emqx-config
-    affinity:
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                  - key: app.kubernetes.io/name
-                    operator: In
-                    values: ["emqx"]
-              topologyKey: kubernetes.io/hostname
+      size: 20Mi
+      storageClassName: "freenas-nfs-csi"
+      accessMode: ReadWriteOnce
+    # affinity:
+    #   podAntiAffinity:
+    #     preferredDuringSchedulingIgnoredDuringExecution:
+    #       - weight: 100
+    #         podAffinityTerm:
+    #           labelSelector:
+    #             matchExpressions:
+    #               - key: app.kubernetes.io/name
+    #                 operator: In
+    #                 values: ["emqx"]
+    #           topologyKey: kubernetes.io/hostname
   valuesFrom:
     - targetPath: emqxConfig.EMQX_DASHBOARD__DEFAULT_PASSWORD
       kind: Secret
