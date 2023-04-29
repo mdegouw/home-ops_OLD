@@ -6,8 +6,6 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-apps-emqx
-    - name: cluster-apps-onepassword-connect
     - name: cluster-apps-democratic-csi-freenas-nfs
   path: ./kubernetes/apps/default/node-red/app
   prune: true
