@@ -28,7 +28,7 @@ spec:
     emqxConfig:
       ALLOW_ANONYMOUS: "false"
       AUTH__MNESIA__PASSWORD_HASH: plain
-      CLUSTER__DISCOVERY_STRATEGY: " static"
+      CLUSTER__DISCOVERY_STRATEGY: "static"
     service:
       type: LoadBalancer
       externalIPs: ["${SVC_EMQX_ADDR}"]
