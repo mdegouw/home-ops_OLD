@@ -55,13 +55,13 @@ spec:
           maxParallel: 8
         destinationPath: s3://mdegouw-testing03/
         endpointURL: https://s3.us-west-004.backblazeb2.com
-      s3Credentials:
-        region:
-          name: cloudnative-pg-secret
-          key: aws-region
-        accessKeyId:
-          name: cloudnative-pg-secret
-          key: aws-access-key-id
-        secretAccessKey:
-          name: cloudnative-pg-secret
-          key: aws-secret-access-key
+        s3Credentials:
+          region:
+            name: cloudnative-pg-secret
+            key: aws-region
+          accessKeyId:
+            name: cloudnative-pg-secret
+            key: aws-access-key-id
+          secretAccessKey:
+            name: cloudnative-pg-secret
+            key: aws-secret-access-key
