@@ -8,7 +8,7 @@ metadata:
     kyverno.io/ignore: "true"
 spec:
   instances: 3
-  imageName: ghcr.io/cloudnative-pg/postgresql:14.7
+  imageName: ghcr.io/cloudnative-pg/postgresql:15,2
   inheritedMetadata:
     labels:
       kube-image-keeper.enix.io/image-caching-policy: ignore
@@ -37,7 +37,9 @@ spec:
       endpointURL: https://s3.us-west-004.backblazeb2.com
       serverName: postgres-v1
       s3Credentials:
-        region: us-west-004
+        region:
+          name: cloudnative-pg-secret
+          key: aws-region
         accessKeyId:
           name: cloudnative-pg-secret
           key: aws-access-key-id
