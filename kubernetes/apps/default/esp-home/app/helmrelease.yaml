@@ -58,11 +58,6 @@ spec:
         enabled: false
       startup:
         enabled: false
-    # podSecurityContext:
-    #   runAsUser: 1000
-    #   runAsGroup: 1000
-    #   fsGroup: 1000
-    #   fsGroupChangePolicy: OnRootMismatch
     volumeClaimTemplates:
       - name: config
         mountPath: /config
@@ -70,9 +65,3 @@ spec:
         size: 5Gi
         storageClass: freenas-nfs-csi
         retain: true
-    resources:
-      requests:
-        cpu: 10m
-        memory: 100Mi
-      limits:
-        memory: 750Mi
