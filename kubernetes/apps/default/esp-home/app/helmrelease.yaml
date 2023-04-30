@@ -39,7 +39,8 @@ spec:
             port: 6052
       hass:
         ports:
-          http:
+          websocket:
+            enabled: true
             port: 6053
     ingress:
       main:
