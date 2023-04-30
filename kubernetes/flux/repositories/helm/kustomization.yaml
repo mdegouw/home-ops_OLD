@@ -23,4 +23,3 @@ resources:
   - ./kyverno.yaml
   - ./backube.yaml
   - ./piraeus.yaml
-  - ./unifi.yaml
