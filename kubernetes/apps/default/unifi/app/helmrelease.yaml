@@ -42,13 +42,13 @@ spec:
         externalIPs: ["${SVC_UNIFI_ADDR}"]
         ports:
           http:
-            port: 8443
+            port: 8080
           stun:
             port: 3478
           discovery:
             port: 10001
-          comm:
-            port: 8080
+          https:
+            port: 8443
           l2discover:
             port: 1900
           httpsptalredir:
