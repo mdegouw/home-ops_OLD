@@ -41,14 +41,14 @@ spec:
         type: LoadBalancer
         externalIPs: ["${SVC_UNIFI_ADDR}"]
         ports:
-          http:
-            port: 8080
+          https:
+            port: 8443
           stun:
             port: 3478
           discovery:
             port: 10001
-          https:
-            port: 8443
+          comm:
+            port: 8080
           l2discover:
             port: 1900
           httpsptalredir:
