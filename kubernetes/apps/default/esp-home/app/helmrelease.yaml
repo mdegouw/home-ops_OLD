@@ -40,7 +40,7 @@ spec:
         externalIPs: ["${SVC_ESP_HOME_ADDR}"]
         ports:
           http:
-            port: 80
+            port: 6052
     ingress:
       main:
         enabled: true
