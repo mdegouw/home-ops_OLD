@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: unifi
-      version: 13.0.10
+      version: 0.1.8
       sourceRef:
         kind: HelmRepository
         name: unifi
@@ -27,8 +27,23 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    persistence:
-      config:
-        enabled: true
-        storageClass: freenas-nfs-csi
-        mountPath: "/unifi"
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
+        hajimari.io/icon: mdi:home-assistant
+      hosts:
+        - host: &host hass.${SECRET_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+            - *host
+
+    serviceAP:
+      externalIPs: ["${SVC_UNIFI_ADDR}"]
+
+    configVolume:
+      storageClassName: freenas-nfs-csi
