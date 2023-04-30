@@ -40,7 +40,7 @@ spec:
         externalIPs: ["${SVC_ESP_HOME_ADDR}"]
         ports:
           http:
-            port: 8123
+            port: 80
     ingress:
       main:
         enabled: true
