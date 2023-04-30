@@ -58,10 +58,12 @@ spec:
         enabled: false
       startup:
         enabled: false
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 5Gi
+    persistence:
+      config:
+        enabled: true
         storageClass: freenas-nfs-csi
+        type: pvc
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        mountPath: /config
         retain: true
