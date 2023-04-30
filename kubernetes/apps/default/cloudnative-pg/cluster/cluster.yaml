@@ -34,9 +34,10 @@ spec:
         compression: bzip2
         maxParallel: 8
       destinationPath: s3://mdegouw-testing03/
-      endpointURL: http://s3.us-west-004.backblazeb2.com
+      endpointURL: https://s3.us-west-004.backblazeb2.com
       serverName: postgres-v1
       s3Credentials:
+        region: us-west-004
         accessKeyId:
           name: cloudnative-pg-secret
           key: aws-access-key-id
