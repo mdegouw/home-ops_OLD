@@ -41,7 +41,7 @@ spec:
         type: LoadBalancer
         externalIPs: ["${SVC_UNIFI_ADDR}"]
         ports:
-          https:
+          http:
             port: 8443
           stun:
             port: 3478
