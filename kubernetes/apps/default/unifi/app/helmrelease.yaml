@@ -51,11 +51,11 @@ spec:
             port: 8080
           l2discover:
             port: 1900
-          httpsportalredir:
+          httpsptalredir:
             port: 8843
-          httpportalredir:
+          httpptalredir:
             port: 8880
-          mobilespeedtest:
+          mobspeedtest:
             port: 6789
           remotesyslog:
             port: 5514
