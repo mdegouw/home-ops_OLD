@@ -12,56 +12,56 @@ spec:
   inheritedMetadata:
     labels:
       kube-image-keeper.enix.io/image-caching-policy: ignore
-  primaryUpdateStrategy: supervised
+  primaryUpdateStrategy: unsupervised
   storage:
     size: 20Gi
     storageClass: freenas-iscsi-csi
   superuserSecret:
     name: cloudnative-pg-secret
-  bootstrap:
-    recovery:
-      source: &previous-cluster postgres-v1
+  # bootstrap:
+  #   recovery:
+  #     source: &previous-cluster postgres-v1
   postgresql:
     parameters:
       max_connections: "600"
       shared_buffers: 512MB
   monitoring:
     enablePodMonitor: true
-  backup:
-    retentionPolicy: 30d
-    barmanObjectStore:
-      wal:
-        compression: bzip2
-        maxParallel: 8
-      destinationPath: s3://mdegouw-testing03/
-      endpointURL: https://s3.us-west-004.backblazeb2.com
-      serverName: postgres-v1
-      s3Credentials:
-        region:
-          name: cloudnative-pg-secret
-          key: aws-region
-        accessKeyId:
-          name: cloudnative-pg-secret
-          key: aws-access-key-id
-        secretAccessKey:
-          name: cloudnative-pg-secret
-          key: aws-secret-access-key
-  Note: externalClusters is needed when recovering from an existing cnpg cluster
-  externalClusters:
-    - name: *previous-cluster
-      barmanObjectStore:
-        wal:
-          compression: bzip2
-          maxParallel: 8
-        destinationPath: s3://mdegouw-testing03/
-        endpointURL: https://s3.us-west-004.backblazeb2.com
-        s3Credentials:
-          region:
-            name: cloudnative-pg-secret
-            key: aws-region
-          accessKeyId:
-            name: cloudnative-pg-secret
-            key: aws-access-key-id
-          secretAccessKey:
-            name: cloudnative-pg-secret
-            key: aws-secret-access-key
+  # backup:
+  #   retentionPolicy: 30d
+  #   barmanObjectStore:
+  #     wal:
+  #       compression: bzip2
+  #       maxParallel: 8
+  #     destinationPath: s3://mdegouw-testing03/
+  #     endpointURL: https://s3.us-west-004.backblazeb2.com
+  #     serverName: postgres-v1
+  #     s3Credentials:
+  #       region:
+  #         name: cloudnative-pg-secret
+  #         key: aws-region
+  #       accessKeyId:
+  #         name: cloudnative-pg-secret
+  #         key: aws-access-key-id
+  #       secretAccessKey:
+  #         name: cloudnative-pg-secret
+  #         key: aws-secret-access-key
+  # Note: externalClusters is needed when recovering from an existing cnpg cluster
+  # externalClusters:
+  #   - name: *previous-cluster
+  #     barmanObjectStore:
+  #       wal:
+  #         compression: bzip2
+  #         maxParallel: 8
+  #       destinationPath: s3://mdegouw-testing03/
+  #       endpointURL: https://s3.us-west-004.backblazeb2.com
+  #       s3Credentials:
+  #         region:
+  #           name: cloudnative-pg-secret
+  #           key: aws-region
+  #         accessKeyId:
+  #           name: cloudnative-pg-secret
+  #           key: aws-access-key-id
+  #         secretAccessKey:
+  #           name: cloudnative-pg-secret
+  #           key: aws-secret-access-key
