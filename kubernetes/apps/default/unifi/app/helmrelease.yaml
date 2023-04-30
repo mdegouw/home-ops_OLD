@@ -9,11 +9,11 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: unifi
-      version: 0.1.8
+      chart: app-template
+      version: 1.4.0
       sourceRef:
         kind: HelmRepository
-        name: unifi
+        name: bjw-s
         namespace: flux-system
   maxHistory: 3
   install:
@@ -27,23 +27,60 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    ingress:
-      enabled: true
-      className: nginx
+    controller:
+      type: statefulset
       annotations:
-        external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
-        hajimari.io/icon: mdi:home-assistant
-      hosts:
-        - host: &host unifi.${SECRET_DOMAIN}
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - hosts:
-            - *host
+        reloader.stakater.com/auto: "true"
+    image:
+      repository: ghcr.io/linuxserver/unifi-controller
+      tag: 7.3.83@sha256:f2a45d40fef9b423ea1e1a89b87b2e218a9644df1f2bed165c8968e3d2f21299
 
-    serviceAP:
-      externalIPs: ["${SVC_UNIFI_ADDR}"]
 
-    configVolume:
-      storageClassName: freenas-nfs-csi
+    service:
+      main:
+        type: LoadBalancer
+        externalIPs: ["${SVC_UNIFI_ADDR}"]
+        ports:
+          http:
+            port: 8443
+          stun:
+            port: 3478
+          discovery:
+            port: 10001
+          comm:
+            port: 8080
+          l2discover:
+            port: 1900
+          httpsportalredir:
+            port: 8843
+          httpportalredir:
+            port: 8880
+          mobilespeedtest:
+            port: 6789
+          remotesyslog:
+            port: 5514
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
+          hajimari.io/icon: mdi:home-assistant
+        hosts:
+          - host: &host unifi.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      config:
+        enabled: true
+        storageClass: freenas-nfs-csi
+        type: pvc
+        accessMode: ReadWriteOnce
+        size: 5Gi
+        mountPath: /config
+        retain: true
