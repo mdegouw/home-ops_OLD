@@ -2,14 +2,15 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: crunchydata
+  name: pgo
   namespace: default
 spec:
   interval: 15m
   chart:
     spec:
+      chart: pgo
       sourceRef:
-        kind: OCIRepository
+        kind: HelmRepository
         name: crunchydata
         namespace: flux-system
   maxHistory: 2
