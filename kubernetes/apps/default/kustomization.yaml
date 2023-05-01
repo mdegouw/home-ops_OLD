@@ -6,10 +6,11 @@ resources:
   - ./echo-server/ks.yaml
   - ./hajimari/ks.yaml
   - ./emqx/ks.yaml
-  - ./cloudnative-pg/ks.yaml
+  # - ./cloudnative-pg/ks.yaml
   - ./zigbee2mqtt/ks.yaml
   - ./home-assistant/ks.yaml
   - ./node-red/ks.yaml
   - ./esp-home/ks.yaml
   - ./unifi/ks.yaml
   - ./minio/ks.yaml
+  - ./crunchydata/ks.yaml
