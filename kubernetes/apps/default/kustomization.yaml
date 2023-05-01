@@ -12,3 +12,4 @@ resources:
   - ./node-red/ks.yaml
   - ./esp-home/ks.yaml
   - ./unifi/ks.yaml
+  - ./minio/ks.yaml
