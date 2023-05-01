@@ -1,61 +1,37 @@
 ---
-apiVersion: postgresql.cnpg.io/v1
-kind: Cluster
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
 metadata:
   name: postgres
   namespace: default
   annotations:
     kyverno.io/ignore: "true"
 spec:
-  instances: 3
-  imageName: ghcr.io/cloudnative-pg/postgresql:15.2
-  inheritedMetadata:
-    labels:
-      kube-image-keeper.enix.io/image-caching-policy: ignore
-  primaryUpdateStrategy: unsupervised
-  storage:
-    size: 20Gi
-    storageClass: freenas-iscsi-csi
-  superuserSecret:
-    name: cloudnative-pg-secret
-  # bootstrap:
-  #   recovery:
-  #     source: &previous-cluster postgres-v1
-  postgresql:
-    parameters:
-      max_connections: "600"
-      shared_buffers: 512MB
-  monitoring:
-    enablePodMonitor: true
-  backup:
-    retentionPolicy: 30d
-    barmanObjectStore:
-      wal:
-        compression: bzip2
-        maxParallel: 8
-      destinationPath: s3://postgres/
-      endpointURL: https://s3.mdegouw.nl
-      serverName: postgres-v1
-      s3Credentials:
-        accessKeyId:
-          name: cloudnative-pg-secret
-          key: aws-access-key-id
-        secretAccessKey:
-          name: cloudnative-pg-secret
-          key: aws-secret-access-key
-  # Note: externalClusters is needed when recovering from an existing cnpg cluster
-  # externalClusters:
-  #   - name: *previous-cluster
-  #     barmanObjectStore:
-  #       wal:
-  #         compression: bzip2
-  #         maxParallel: 8
-  #       destinationPath: s3://postgres/
-  #       endpointURL: https://s3.mdegouw.nl
-  #       s3Credentials:
-  #         accessKeyId:
-  #           name: cloudnative-pg-secret
-  #           key: aws-access-key-id
-  #         secretAccessKey:
-  #           name: cloudnative-pg-secret
-  #           key: aws-secret-access-key
+  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-15.2-0
+  postgresVersion: 15
+  instances:
+    - name: pgha1
+      replicas: 3
+      dataVolumeClaimSpec:
+        accessModes:
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: 1Gi
+
+  # backups:
+  #   pgbackrest:
+  #     image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.41-4
+  #     repos:
+  #     - name: repo1
+  #       volume:
+  #         volumeClaimSpec:
+  #           accessModes:
+  #           - "ReadWriteOnce"
+  #           resources:
+  #             requests:
+  #               storage: 1Gi
+  proxy:
+    pgBouncer:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbouncer:ubi8-1.18-0
+      replicas: 2
