@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: default
 resources:
   - ./externalsecret.yaml
+  - ./externalsecret02.yaml
   - ./helmrelease.yaml
   - ./volsync.yaml
 patchesStrategicMerge:
