@@ -15,12 +15,6 @@ spec:
       databases:
         - homeassistant
 
-  proxy:
-    pgBouncer:
-      service:
-        type: LoadBalancer
-        externalIPs: ["${SVC_PG_ADDR}"]
-
   instances:
     - name: pgha1
       replicas: 3
@@ -47,3 +41,6 @@ spec:
     pgBouncer:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbouncer:ubi8-1.18-0
       replicas: 2
+      service:
+        type: LoadBalancer
+        externalIPs: ["${SVC_PG_ADDR}"]
