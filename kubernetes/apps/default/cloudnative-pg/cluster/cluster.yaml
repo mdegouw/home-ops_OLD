@@ -12,7 +12,7 @@ spec:
   inheritedMetadata:
     labels:
       kube-image-keeper.enix.io/image-caching-policy: ignore
-  primaryUpdateStrategy: unsupervised
+  primaryUpdateStrategy: supervised
   storage:
     size: 20Gi
     storageClass: freenas-iscsi-csi
