@@ -48,8 +48,6 @@ spec:
     envFrom:
       - secretRef:
           name: home-assistant-secret
-      - secretRef:
-          name: postgres-pguser-home-assistant
     service:
       main:
         type: LoadBalancer
