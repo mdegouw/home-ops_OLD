@@ -16,27 +16,31 @@ spec:
         - homeassistant
 
   instances:
-    - name: pgha1
+    - name: cluster
       replicas: 3
       dataVolumeClaimSpec:
+        storageClassName: freenas-iscsi-csi
         accessModes:
         - "ReadWriteOnce"
         resources:
           requests:
-            storage: 1Gi
+            storage: 64Gi
 
   backups:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.41-4
+      configuration:
+      - secret:
+          name: postgres-secret
+      global:
+        repo1-path: /postgres/repo1
       repos:
       - name: repo1
-        volume:
-          volumeClaimSpec:
-            accessModes:
-            - "ReadWriteOnce"
-            resources:
-              requests:
-                storage: 1Gi
+        s3:
+          bucket: "postgres"
+          endpoint: "https://s3.mdegouw.nl"
+          region: "nl-home"
+
   proxy:
     pgBouncer:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbouncer:ubi8-1.18-0

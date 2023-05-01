@@ -13,7 +13,7 @@ spec:
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
-      name: pgo
+      name: postgres-operator
       namespace: default
   interval: 15m
   retryInterval: 1m
@@ -27,7 +27,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-crunchydata
-    # - name: cluster-apps-democratic-csi-freenas-iscsi
+    - name: cluster-apps-democratic-csi-freenas-iscsi
     # - name: cluster-apps-onepassword-connect
     # - name: cluster-apps-minio
   path: ./kubernetes/apps/default/crunchydata/cluster
