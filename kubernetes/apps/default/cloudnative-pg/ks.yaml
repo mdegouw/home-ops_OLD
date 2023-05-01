@@ -29,6 +29,7 @@ spec:
     - name: cluster-apps-cloudnative-pg
     - name: cluster-apps-democratic-csi-freenas-iscsi
     - name: cluster-apps-onepassword-connect
+    - name: cluster-apps-minio
   path: ./kubernetes/apps/default/cloudnative-pg/cluster
   prune: true
   sourceRef:

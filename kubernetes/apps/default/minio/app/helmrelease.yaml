@@ -132,7 +132,7 @@ spec:
         storageClass: freenas-nfs-csi
         type: pvc
         accessMode: ReadWriteMany
-        size: 1Gi
+        size: 64Gi
         mountPath: /data
         retain: true
     resources:
