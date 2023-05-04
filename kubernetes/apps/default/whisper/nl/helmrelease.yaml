@@ -33,7 +33,7 @@ spec:
 
     args:
     - --model
-    - "small-int8"
+    - "medium-int8"
     - --language
     - "nl"
 
