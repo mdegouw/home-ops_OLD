@@ -15,4 +15,4 @@ resources:
   - ./minio/ks.yaml
   # - ./crunchydata/ks.yaml
   - ./whisper/ks.yaml
-  - ./frigate/ks.yaml
+  # - ./frigate/ks.yaml
