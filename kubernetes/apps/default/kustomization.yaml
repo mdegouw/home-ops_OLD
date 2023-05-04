@@ -14,4 +14,4 @@ resources:
   - ./unifi/ks.yaml
   - ./minio/ks.yaml
   # - ./crunchydata/ks.yaml
-  # - ./whisper/ks.yaml
+  - ./whisper/ks.yaml
