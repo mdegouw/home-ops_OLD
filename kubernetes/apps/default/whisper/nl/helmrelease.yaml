@@ -31,7 +31,11 @@ spec:
       repository: rhasspy/wyoming-whisper
       tag: latest@sha256:0bb3af0b305500f843a1444501a58f302b39b35235bc6187174580c8ae91641e
 
-    arguments: ['--model', 'medium-int8', '--language', 'nl']
+    args:
+    - --model
+    - "medium-int8"
+    - --language
+    - "nl"
 
     service:
       main:
