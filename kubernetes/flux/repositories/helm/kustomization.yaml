@@ -24,3 +24,5 @@ resources:
   - ./backube.yaml
   - ./piraeus.yaml
   - ./crunchydata.yaml
+  - ./intel.yaml
+  - ./kubernetes-sigs-nfd.yaml

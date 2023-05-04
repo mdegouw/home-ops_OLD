@@ -1,0 +1,139 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: frigate
+  namespace: home-automation
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.4.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
+
+    image:
+      repository: ghcr.io/blakeblackshear/frigate
+      tag: 0.12.0
+
+    env:
+      LIBVA_DRIVER_NAME: i965
+
+    # envFrom:
+    #   - secretRef:
+    #       name: frigate-secret
+
+    service:
+      main:
+        ports:
+          http:
+            port: &port 5000
+          rtsp:
+            enabled: true
+            port: 8554
+
+    probes:
+      liveness: &probe
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /api/version
+            port: *port
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness:
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /api/version
+            port: *port
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      startup:
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /api/version
+            port: *port
+          failureThreshold: 30
+          periodSeconds: 10
+
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: frigate-configmap
+        subPath: config.yaml
+        mountPath: /config/config.yml
+        readOnly: true
+      # media:
+      #   enabled: true
+      #   type: nfs
+      #   server: "nas.bjw-s.tech"
+      #   path: /volume1/IPCams/frigate
+      #   mountPath: /media
+      usb:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/bus/usb
+      cache:
+        enabled: true
+        type: emptyDir
+        medium: Memory
+        sizeLimit: 512Mi
+        mountPath: /dev/shm
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          hajimari.io/icon: mdi:camcorder
+        hosts:
+          - host: &host frigate.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+
+    securityContext:
+      privileged: true
+
+    nodeSelector:
+      google.feature.node.kubernetes.io/coral: "true"
+      intel.feature.node.kubernetes.io/gpu: "true"
+
+    resources:
+      requests:
+        gpu.intel.com/i915: 1
+        cpu: 218m
+        memory: 949M
+      limits:
+        gpu.intel.com/i915: 1
+        memory: 949M
+
+    volumeClaimTemplates:
+      - name: data
+        mountPath: /data
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: freenas-nfs-csi
