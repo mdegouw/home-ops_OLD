@@ -16,3 +16,4 @@ spec:
   wait: true
   dependsOn:
     - name: cluster-apps-smtp-relay
+    - name: cluster-apps-glauth
