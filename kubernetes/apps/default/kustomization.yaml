@@ -16,3 +16,6 @@ resources:
   # - ./crunchydata/ks.yaml
   - ./whisper/ks.yaml
   # - ./frigate/ks.yaml #Can activate when i have a cam
+  - ./glauth/ks.yaml
+  - ./redis/ks.yaml
+  - ./authelia/ks.yaml
