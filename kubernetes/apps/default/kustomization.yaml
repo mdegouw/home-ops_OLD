@@ -3,31 +3,31 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./namespace.yaml
-  - ./echo-server/ks.yaml
-  - ./hajimari/ks.yaml
-  - ./emqx/ks.yaml
-  - ./cloudnative-pg/ks.yaml
-  - ./zigbee2mqtt/ks.yaml
-  - ./home-assistant/ks.yaml
-  - ./node-red/ks.yaml
-  - ./esp-home/ks.yaml
-  - ./unifi/ks.yaml
-  - ./minio/ks.yaml
-  # - ./crunchydata/ks.yaml
-  - ./whisper/ks.yaml
-  - ./piper/ks.yaml
-  # - ./frigate/ks.yaml #Can activate when i have a cam
-  - ./glauth/ks.yaml
-  - ./redis/ks.yaml
-  - ./authelia/ks.yaml
-  - ./smtp-relay/ks.yaml
-  - ./theme-park/ks.yaml
-  # - ./changedetection/ks.yaml
-  # - ./shlink/ks.yaml
-  - ./plex/ks.yaml
-  - ./jellyfin/ks.yaml
-  - ./qbittorrent/ks.yaml
-  - ./unpackerr/ks.yaml
-  - ./sonarr/ks.yaml
-  - ./lidarr/ks.yaml
-  - ./radarr/ks.yaml
+  # - ./echo-server/ks.yaml
+  # - ./hajimari/ks.yaml
+  # - ./emqx/ks.yaml
+  # - ./cloudnative-pg/ks.yaml
+  # - ./zigbee2mqtt/ks.yaml
+  # - ./home-assistant/ks.yaml
+  # - ./node-red/ks.yaml
+  # - ./esp-home/ks.yaml
+  # - ./unifi/ks.yaml
+  # - ./minio/ks.yaml
+  # # - ./crunchydata/ks.yaml
+  # - ./whisper/ks.yaml
+  # - ./piper/ks.yaml
+  # # - ./frigate/ks.yaml #Can activate when i have a cam
+  # - ./glauth/ks.yaml
+  # - ./redis/ks.yaml
+  # - ./authelia/ks.yaml
+  # - ./smtp-relay/ks.yaml
+  # - ./theme-park/ks.yaml
+  # # - ./changedetection/ks.yaml
+  # # - ./shlink/ks.yaml
+  # - ./plex/ks.yaml
+  # - ./jellyfin/ks.yaml
+  # - ./qbittorrent/ks.yaml
+  # - ./unpackerr/ks.yaml
+  # - ./sonarr/ks.yaml
+  # - ./lidarr/ks.yaml
+  # - ./radarr/ks.yaml
