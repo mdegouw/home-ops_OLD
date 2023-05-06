@@ -40,3 +40,12 @@ spec:
         ports:
           http:
             port: 10200
+    persistence:
+      config:
+        enabled: true
+        storageClass: freenas-nfs-csi
+        type: pvc
+        accessMode: ReadWriteOnce
+        size: 10Gi
+        mountPath: /config
+        retain: true
