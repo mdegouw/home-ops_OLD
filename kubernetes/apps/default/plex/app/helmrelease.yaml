@@ -61,23 +61,25 @@ spec:
       fsGroup: 568
       fsGroupChangePolicy: OnRootMismatch
       supplementalGroups: [44, 109, 10000]
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 5Gi
+    persistence:
+      config:
+        enabled: true
         storageClass: freenas-nfs-csi
-    # persistence:
-    #   media:
-    #     enabled: true
-    #     type: nfs
-    #     server: 10.69.126.10
-    #     path: /mnt/p/Media
-    #     mountPath: /media
-    #     readOnly: true
-    #   transcode:
-    #     enabled: true
-    #     type: emptyDir
+        type: pvc
+        accessMode: ReadWriteOnce
+        size: 100Gi
+        mountPath: /config
+        retain: true
+      media:
+        enabled: true
+        type: nfs
+        server: 10.69.126.10
+        path: /mnt/p/Media
+        mountPath: /media
+        readOnly: true
+      transcode:
+        enabled: true
+        type: emptyDir
     nodeSelector:
       intel.feature.node.kubernetes.io/gpu: "true"
     resources:
