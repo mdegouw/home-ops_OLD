@@ -67,7 +67,7 @@ spec:
         mountPath: /datastore
         accessMode: ReadWriteOnce
         size: 1Gi
-        storageClass: ceph-block
+        storageClass: freenas-nfs-csi
     resources:
       requests:
         cpu: 10m
