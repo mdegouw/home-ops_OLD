@@ -65,19 +65,19 @@ spec:
       - name: config
         mountPath: /config
         accessMode: ReadWriteOnce
-        size: 100Gi
+        size: 5Gi
         storageClass: freenas-nfs-csi
-    persistence:
-      media:
-        enabled: true
-        type: nfs
-        server: 10.69.126.10
-        path: /mnt/p/Media
-        mountPath: /media
-        readOnly: true
-      transcode:
-        enabled: true
-        type: emptyDir
+    # persistence:
+    #   media:
+    #     enabled: true
+    #     type: nfs
+    #     server: 10.69.126.10
+    #     path: /mnt/p/Media
+    #     mountPath: /media
+    #     readOnly: true
+    #   transcode:
+    #     enabled: true
+    #     type: emptyDir
     nodeSelector:
       intel.feature.node.kubernetes.io/gpu: "true"
     resources:
