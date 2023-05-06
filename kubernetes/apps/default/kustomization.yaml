@@ -21,8 +21,13 @@ resources:
   - ./redis/ks.yaml
   - ./authelia/ks.yaml
   - ./smtp-relay/ks.yaml
-  # - ./theme-park/ks.yaml
+  - ./theme-park/ks.yaml
   # - ./changedetection/ks.yaml
   # - ./shlink/ks.yaml
   - ./plex/ks.yaml
   - ./jellyfin/ks.yaml
+  - ./qbittorrent/ks.yaml
+  - ./unpackerr/ks.yaml
+  - ./sonarr/ks.yaml
+  - ./lidarr/ks.yaml
+  - ./radarr/ks.yaml
