@@ -15,6 +15,7 @@ resources:
   - ./minio/ks.yaml
   # - ./crunchydata/ks.yaml
   - ./whisper/ks.yaml
+  - ./piper/ks.yaml
   # - ./frigate/ks.yaml #Can activate when i have a cam
   - ./glauth/ks.yaml
   - ./redis/ks.yaml
