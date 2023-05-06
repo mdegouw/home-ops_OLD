@@ -24,12 +24,12 @@ resources:
   - ./theme-park/ks.yaml
   # - ./changedetection/ks.yaml
   # - ./shlink/ks.yaml
-  - ./plex/ks.yaml
-  - ./jellyfin/ks.yaml
-  - ./qbittorrent/ks.yaml
-  - ./unpackerr/ks.yaml
-  - ./sonarr/ks.yaml
-  - ./lidarr/ks.yaml
-  - ./radarr/ks.yaml
-  - ./bazarr/ks.yaml
-  - ./whisparr/ks.yaml
+  # - ./plex/ks.yaml
+  # - ./jellyfin/ks.yaml
+  # - ./qbittorrent/ks.yaml
+  # - ./unpackerr/ks.yaml
+  # - ./sonarr/ks.yaml
+  # - ./lidarr/ks.yaml
+  # - ./radarr/ks.yaml
+  # - ./bazarr/ks.yaml
+  # - ./whisparr/ks.yaml
