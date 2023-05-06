@@ -36,6 +36,8 @@ spec:
       tag: latest@sha256:b35ab4a327c17b0f9182a8ef976785d02bd10f59f333bc6f4aba0a2b778004c2
     env:
       TZ: ${TIMEZONE}
+      PUSHOVER_DEBUG: "false"
+      PUSHOVER_APP_URL: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
       whisparr__INSTANCE_NAME: whisparr
       whisparr__PORT: &port 6969
       whisparr__APPLICATION_URL: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
