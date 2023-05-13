@@ -33,7 +33,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/hotio/whisparr
-      tag: latest@sha256:b35ab4a327c17b0f9182a8ef976785d02bd10f59f333bc6f4aba0a2b778004c2
+      tag: latest@sha256:03e18e2c519e19c4b3528748bf592299526e2c107e045daab6930f28376d1dce
     env:
       TZ: ${TIMEZONE}
       PUSHOVER_DEBUG: "false"
