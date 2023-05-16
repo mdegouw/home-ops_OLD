@@ -32,4 +32,3 @@ resources:
   - ./lidarr/ks.yaml
   - ./radarr/ks.yaml
   - ./bazarr/ks.yaml
-  - ./whisparr/ks.yaml
